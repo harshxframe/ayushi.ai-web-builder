@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to E-Shop, your ultimate destination for modern fashion, electronics, and home goods. Explore our curated collections and find your next favorite item!">
+    <title>E-Shop | Modern E-commerce Landing Page</title>
+    <style>
+        /* Basic Reset & Body Styling */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #28a745;
+            --light-bg: #f8f9fa;
+            --dark-text: #343a40;
+            --light-text: #ffffff;
+            --border-color: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+
+        .btn-accent:hover {
+            background-color: #218838;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--light-text);
+            padding: 15px 0;
+            box-shadow: 0 2px 4px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo svg {
+            margin-right: 8px;
+            color: var(--primary-color);
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icons .cart-icon {
+            cursor: pointer;
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .nav-icons .cart-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--dark-text);
+            transition: var(--transition);
+        }
+
+        .nav-icons .cart-icon svg:hover {
+            color: var(--primary-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            font-size: 0.75rem;
+            border-radius: 50%;
+            padding: 3px 6px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 22px;
+            justify-content: space-between;
+        }
+
+        .hamburger .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark-text);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background-color: #f0f0f0; /* Fallback for image loading */
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)); /* Dark overlay */
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            /* Inline fallback SVG for hero image */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNlZWUiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxyZWN0IHg9IjMiIHk9IjYiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNSIgcng9IjIiIHJ5PSIyIj48L3JlY3Q+CiAgICAgICAgPHBhdGggZD0iTTE2IDEwYTRgNCAwIDAgMS04IDAiPjwvcGF0aD4KICAgICAgICA8bGluZSB4MT0iMTIiICB5MT0iMTgiIHgyPSIxMiIgeTI9IjEyIj48L2xpbmU+CiAgICAgICAgPGxpbmUgeDE9IjkiIHkxPSIxNSIgeDI9IjE1IiB5Mj0iMTUiPjwvbGluZT4KICAgICAgICA8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZmlsbD0iIzU1NSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNob3AgTm93PC90ZXh0PgogICAgPC9zdmc+');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Products Section */
+        #shop {
+            background-color: var(--light-bg);
+        }
+
+        #shop h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--dark-text);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--light-text);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px var(--shadow);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            /* Inline fallback SVG for product images */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmMGYwZjAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIj48L3JlY3Q+CiAgICAgICAgPGxpbmUgeDE9IjkiIHkxPSIzIiB4Mj0iOSIgeTI9IjIxIj48L2xpbmU+CiAgICAgICAgPGxpbmUgeDE9IjE1IiB5MT0iMyIgeDI9IjE1IiB5Mj0iMjEiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjkiIHgyPSIyMSIgeTI9IjkiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjE1IiB4Mj0iMjEiIHkyPSIxNSI+PC9saW5lPgogICAgICAgIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0ic2Fuc2Utc2VyaXMiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlByb2R1Y3QgSW1hZ2U8L3RleHQ+CiAgICA8L3N2Zz4=');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+
+        .product-info .price {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-info .btn {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* About Us Section */
+        #about {
+            background-color: var(--light-text);
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-content img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--shadow);
+            height: 350px;
+            object-fit: cover;
+            /* Inline fallback SVG for about image */
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmMGYwZjAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxwYXRoIGQ9Ik0xNyAyMXYtMmE0IDQgMCAwIDAtNC00SDVhNCA0IDAgMCAwLTQgNHYyIj48L3BhdGg+CiAgICAgICAgPGNpcmNsZSBjeD0iOSIgY3k9IjciIHI9IjQiPjwvY2lyY2xlPgogICAgICAgIDxwYXRoIGQ9Ik0yMyAyMXYtMmE0IDQgMCAwIDAtMy0zLjg3Ij48L3BhdGg+CiAgICAgICAgPHBhdGggZD0iTTE2IDMuMTNhNCA0IDAgMCAxIDAgNy43NSI+PC9wYXRoPgogICAgICAgIDx0ZXh0IHg9IjUwJSIgeT0iOTAJSIgZmlsbD0iI2FhYSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFib3V0IFVzIEltYWdlPC90ZXh0PgogICAgPC9zdmc+');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--light-bg);
+        }
+
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--dark-text);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info, .contact-form {
+            background-color: var(--light-text);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .contact-info h3, .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+
+        .contact-info svg {
+            margin-right: 10px;
+            color: var(--primary-color);
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: var(--light-text);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--light-text);
+            margin: 0 10px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Cart Modal */
+        .cart-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .cart-modal-overlay.active {
+            display: flex;
+        }
+
+        .cart-modal {
+            background-color: var(--light-text);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px var(--shadow);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .cart-modal-overlay.active .cart-modal {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cart-modal h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .cart-items {
+            list-style: none;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-item-info span {
+            font-size: 1rem;
+            color: var(--dark-text);
+        }
+
+        .cart-item-info small {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .cart-actions .btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .cart-modal .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .cart-modal .close-btn:hover {
+            color: var(--dark-text);
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            color: var(--secondary-color);
+            margin: 30px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: var(--light-text);
+                box-shadow: 0 4px 8px var(--shadow);
+                padding: 20px 0;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            h2 {
+                font-size: 2rem !important;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-content img {
+                width: 100%;
+                height: 250px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hamburger animation */
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                E-Shop
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <div class="cart-icon" aria-label="Shopping Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <img class="hero-bg"
+                 src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                 onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNlZWUiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxyZWN0IHg9IjMiIHk9IjYiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxNSIgcng9IjIiIHJ5PSIyIj48L3JlY3Q+CiAgICAgICAgPHBhdGggZD0iTTE2IDEwYTRgNCAwIDAgMS04IDAiPjwvcGF0aD4KICAgICAgICA8bGluZSB4MT0iMTIiICB5MT0iMTgiIHgyPSIxMiIgeTI9IjEyIj48L2xpbmU+CiAgICAgICAgPGxpbmUgeDE9IjkiIHkxPSIxNSIgeDI9IjE1IiB5Mj0iMTUiPjwvbGluZT4KICAgICAgICA8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZmlsbD0iIzU1NSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNob3AgTm93PC90ZXh0PgogICAgPC9zdmc+';"
+                 alt="Stylish models showcasing modern fashion collection"
+                 loading="lazy">
+            <div class="hero-content">
+                <h1>Discover Your Style</h1>
+                <p>Explore our latest collection of trendy apparel, cutting-edge electronics, and essential home goods.</p>
+                <a href="#shop" class="btn">Shop Now</a>
+            </div>
+        </section>
+
+        <section id="shop" class="section-padding">
+            <div class="container text-center">
+                <h2>Our Products</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1546875043-41c304d7c588?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmMGYwZjAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIj48L3JlY3Q+CiAgICAgICAgPGxpbmUgeDE9IjkiIHkxPSIzIiB4Mj0iOSIgeTI9IjIxIj48L2xpbmU+CiAgICAgICAgPGxpbmUgeDE9IjE1IiB5MT0iMyIgeDI9IjE1IiB5Mj0iMjEiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjkiIHgyPSIyMSIgeTI9IjkiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjE1IiB4Mj0iMjEiIHkyPSIxNSI+PC9saW5lPgogICAgICAgIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UHJvZHVjdCBJbWFnZTwvdGV4dD4KICAgIDwvc3ZnPg==';"
+                             alt="Stylish athletic shoes on display" loading="lazy">
+                        <div class="product-info">
+                            <h3>Sporty Sneakers</h3>
+                            <p class="price">$79.99</p>
+                            <button class="btn add-to-cart" data-name="Sporty Sneakers" data-price="79.99">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1521572177456-f0869b2d8329?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmMGYwZjAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIj48L3JlY3Q+CiAgICAgICAgPGxpbmUgeDE9IjkiIHkxPSIzIiB4Mj0iOSIgeTI9IjIxIj48L2xpbmU+CiAgICAgICAgPGxpbmUgeDE9IjE1IiB5MT0iMyIgeDI9IjE1IiB5Mj0iMjEiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjkiIHgyPSIyMSIgeTI9IjkiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjE1IiB4Mj0iMjEiIHkyPSIxNSI+PC9saW5lPgogICAgICAgIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UHJvZHVjdCBJbWFnZTwvdGV4dD4KICAgIDwvc3ZnPg==';"
+                             alt="Classic white t-shirt hanging" loading="lazy">
+                        <div class="product-info">
+                            <h3>Minimalist T-Shirt</h3>
+                            <p class="price">$29.50</p>
+                            <button class="btn add-to-cart" data-name="Minimalist T-Shirt" data-price="29.50">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1593347965476-a3674686411d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmMGYwZjAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIj48L3JlY3Q+CiAgICAgICAgPGxpbmUgeDE9IjkiIHkxPSIzIiB4Mj0iOSIgeTI9IjIxIj48L2xpbmU+CiAgICAgICAgPGxpbmUgeDE9IjE1IiB5MT0iMyIgeDI9IjE1IiB5Mj0iMjEiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjkiIHgyPSIyMSIgeTI9IjkiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjE1IiB4Mj0iMjEiIHkyPSIxNSI+PC9saW5lPgogICAgICAgIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UHJvZHVjdCBJbWFnZTwvdGV4dD4KICAgIDwvc3ZnPg==';"
+                             alt="Modern wireless headphones" loading="lazy">
+                        <div class="product-info">
+                            <h3>Wireless Headphones</h3>
+                            <p class="price">$149.00</p>
+                            <button class="btn add-to-cart" data-name="Wireless Headphones" data-price="149.00">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1579308107931-158223d78c3c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmMGYwZjAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIj48L3JlY3Q+CiAgICAgICAgPGxpbmUgeDE9IjkiIHkxPSIzIiB4Mj0iOSIgeTI9IjIxIj48L2xpbmU+CiAgICAgICAgPGxpbmUgeDE9IjE1IiB5MT0iMyIgeDI9IjE1IiB5Mj0iMjEiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjkiIHgyPSIyMSIyeTI9IjkiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMyIgeTE9IjE1IiB4Mj0iMjEiIHkyPSIxNSI+PC9saW5lPgogICAgICAgIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UHJvZHVjdCBJbWFnZTwvdGV4dD4KICAgIDwvc3ZnPg==';"
+                             alt="Elegant wristwatch on a stand" loading="lazy">
+                        <div class="product-info">
+                            <h3>Elegant Wristwatch</h3>
+                            <p class="price">$199.99</p>
+                            <button class="btn add-to-cart" data-name="Elegant Wristwatch" data-price="199.99">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding">
+            <div class="container text-center">
+                <h2>About Us</h2>
+                <div class="about-content">
+                    <img src="https://images.unsplash.com/photo-1552581234-26379f5b587c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                         onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmMGYwZjAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgIDxwYXRoIGQ9Ik0xNyAyMXYtMmE0IDQgMCAwIDAtNC00SDVhNCA0IDAgMCAwLTQgNHYyIj48L3BhdGg+CiAgICAgICAgPGNpcmNsZSBjeD0iOSIgY3k9IjciIHI9IjQiPjwvY2lyY2xlPgogICAgICAgIDxwYXRoIGQ9Ik0yMyAyMXYtMmE0IDQgMCAwIDAtMy0zLjg3Ij48L3BhdGg+CiAgICAgICAgPHBhdGggZD0iTTE2IDMuMTNhNCA0IDAgMCAxIDAgNy43NSI+PC9wYXRoPgogICAgICAgIDx0ZXh0IHg9IjUwJSIgeT0iOTAJSIgZmlsbD0iI2FhYSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFib3V0IFVzIEltYWdlPC90ZXh0PgogICAgPC9zdmc+';"
+                         alt="Team members collaborating at a meeting" loading="lazy">
+                    <div class="about-text">
+                        <h3>Our Story</h3>
+                        <p>Welcome to E-Shop, where passion meets quality! Founded with a vision to bring the best products to your doorstep, we've grown into a trusted name in online retail. We believe in offering a seamless shopping experience coupled with exceptional customer service.</p>
+                        <p>Our carefully curated selection spans across various categories, ensuring that you find exactly what you're looking for, whether it's the latest fashion trends, innovative electronics, or unique home decor. We are committed to sustainability and ethical sourcing, striving to make a positive impact with every purchase.</p>
+                        <p>Join our community of happy customers and experience the E-Shop difference today!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding">
+            <div class="container text-center">
+                <h2>Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 22s-8-4-8-10c0-7 7-9 8-9s8 2 8 9c0 6-8 10-8 10z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            123 Main Street, Anytown, USA 12345
+                        </p>
+                        <p>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-3.1-8.63A2 2 0 0 1 3.07 4H6.07a2 2 0 0 1 2 1.73c.22.63.49 1.25.8 1.85a12.92 12.92 0 0 1 2.57 2.57c.6.31 1.22.58 1.85.8a2 2 0 0 1 1.73 2v.05A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            (123) 456-7890
+                        </p>
+                        <p>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            info@eshop.com
+                        </p>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required placeholder="Your Email">
+
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Your Message"></textarea>
+
+                            <button type="submit" class="btn btn-accent">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 E-Shop. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c11 3 21-11 21-19.78 0-.35 0-.7-.02-1.05A10.94 10.94 0 0 0 24 2.81Z"></path>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal-overlay">
+        <div class="cart-modal">
+            <button class="close-btn" aria-label="Close cart">&times;</button>
+            <h3>Your Cart</h3>
+            <ul class="cart-items">
+                <!-- Cart items will be injected here by JS -->
+            </ul>
+            <div class="empty-cart-message">Your cart is empty.</div>
+            <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+            <div class="cart-actions">
+                <button class="btn btn-accent">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            const cartIcon = document.querySelector('.cart-icon');
+            const cartModalOverlay = document.querySelector('.cart-modal-overlay');
+            const cartModal = document.querySelector('.cart-modal');
+            const closeModalBtn = document.querySelector('.cart-modal .close-btn');
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const cartCountSpan = document.querySelector('.cart-count');
+            const cartTotalSpan = document.getElementById('cartTotal');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const emptyCartMessage = document.querySelector('.empty-cart-message');
+            const contactForm = document.getElementById('contactForm');
+
+            let cart = [];
+
+            // --- Navigation and Hamburger Menu ---
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling for all nav links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // --- Cart Functionality ---
+            function updateCartCount() {
+                cartCountSpan.textContent = cart.length;
+                emptyCartMessage.style.display = cart.length === 0 ? 'block' : 'none';
+            }
+
+            function updateCartDisplay() {
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    cart.forEach(item => {
+                        const li = document.createElement('li');
+                        li.classList.add('cart-item');
+                        li.innerHTML = `
+                            <div class="cart-item-info">
+                                <span>${item.name}</span>
+                                <small>$${item.price.toFixed(2)}</small>
+                            </div>
+                            <span>$${(item.price * 1).toFixed(2)}</span>
+                        `;
+                        cartItemsContainer.appendChild(li);
+                        total += item.price;
+                    });
+                }
+                cartTotalSpan.textContent = total.toFixed(2);
+                updateCartCount();
+            }
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productName = e.target.dataset.name;
+                    const productPrice = parseFloat(e.target.dataset.price);
+                    cart.push({ name: productName, price: productPrice });
+                    updateCartDisplay();
+                    cartModalOverlay.classList.add('active'); // Open cart modal on add
+                });
+            });
+
+            cartIcon.addEventListener('click', () => {
+                cartModalOverlay.classList.add('active');
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                cartModalOverlay.classList.remove('active');
+            });
+
+            cartModalOverlay.addEventListener('click', (e) => {
+                if (e.target === cartModalOverlay) {
+                    cartModalOverlay.classList.remove('active');
+                }
+            });
+
+            // Initial cart update
+            updateCartDisplay();
+
+            // --- Contact Form Submission (Simulated) ---
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you shortly.');
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>

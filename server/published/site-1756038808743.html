@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EleganceCraft: Discover thoughtfully designed living. A curated collection of premium home goods, kitchen essentials, and personal accessories.">
+    <title>EleganceCraft | Thoughtfully Designed Living</title>
+    <style>
+        /* Base Styles & Reset */
+        :root {
+            --primary-color: #6B4F4F; /* Deep Taupe/Brown */
+            --secondary-color: #C19F7F; /* Gold/Tan Accent */
+            --background-light: #FBFBFB; /* Off-white background */
+            --text-dark: #333333; /* Dark text */
+            --text-light: #FBFBFB;
+            --border-color: #E0E0E0;
+            --font-family-serif: 'Georgia', serif;
+            --font-family-sans: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-sans);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-family-serif);
+            color: var(--primary-color);
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+        h4 { font-size: 1.4em; }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 0.8em 1.5em;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        /* Header */
+        .site-header {
+            background-color: var(--background-light);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-family-serif);
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo svg {
+            margin-right: 8px;
+            width: 32px;
+            height: 32px;
+            fill: var(--primary-color);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            font-size: 1.05em;
+            padding: 0.5em 0;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            width: 30px;
+            height: 20px;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .hamburger .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--background-light);
+                border-top: 1px solid var(--border-color);
+                padding: 1rem 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 400px; /* Ensure minimum height on small screens */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            overflow: hidden;
+            background-color: var(--primary-color); /* Fallback BG for image */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Overlay for readability */
+            z-index: 1;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        /* Hide fallback SVG if external image loads */
+        .hero-img[src^="https"] + svg { display: none; }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.3em;
+            color: var(--text-light);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 2em;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1em; }
+        }
+
+        /* Section Heading */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-heading h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        /* Product Grids */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+        }
+
+        .product-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Fallback SVG for images */
+        .product-card-image.fallback {
+            background-color: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-card-image.fallback svg {
+            width: 80px;
+            height: 80px;
+            fill: var(--primary-color);
+            opacity: 0.3;
+        }
+        /* Hide fallback SVG if external image loads */
+        .product-card > img[src^="https"] + svg { display: none; }
+
+
+        .product-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card-content h3 {
+            font-size: 1.3em;
+            margin-bottom: 0.5em;
+            color: var(--primary-color);
+        }
+
+        .product-card-content p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 1.2em;
+        }
+
+        .product-card-price {
+            font-family: var(--font-family-serif);
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1em;
+        }
+
+        /* Trust Signals */
+        .trust-signals {
+            background-color: #fff;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .trust-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+        }
+
+        .trust-item svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--primary-color);
+            margin-bottom: 1em;
+        }
+
+        /* Shop Page Specifics */
+        .category-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-intro h2 {
+            font-size: 2.8em;
+            margin-bottom: 0.5em;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+        }
+
+        .category-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        .category-card svg {
+            width: 60px;
+            height: 60px;
+            fill: var(--secondary-color);
+            margin-bottom: 1.5em;
+        }
+
+        /* Product Detail Page */
+        .product-detail-section {
+            padding: 3rem 0;
+        }
+
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .product-image-container {
+            position: relative;
+            background-color: var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Hide fallback SVG if external image loads */
+        .product-image-container img[src^="https"] + svg { display: none; }
+
+        .product-image-container svg { /* Fallback */
+            width: 120px;
+            height: 120px;
+            fill: var(--primary-color);
+            opacity: 0.2;
+        }
+
+
+        .product-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+        }
+
+        .product-price {
+            font-family: var(--font-family-serif);
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1.5em;
+        }
+
+        .product-description p {
+            margin-bottom: 1.5em;
+            color: #555;
+        }
+
+        .add-to-cart-form {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .quantity-selector button {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: var(--primary-color);
+        }
+        .quantity-selector button:hover {
+            background-color: #e0e0e0;
+        }
+        .quantity-selector input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            font-size: 1em;
+            color: var(--text-dark);
+            -moz-appearance: textfield; /* Firefox */
+        }
+        .quantity-selector input::-webkit-outer-spin-button,
+        .quantity-selector input::-webkit-inner-spin-button { /* Chrome, Safari, Edge */
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .product-tabs {
+            margin-top: 3rem;
+        }
+
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            overflow-x: auto; /* For small screens */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1em 1.5em;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            color: #777;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .tab-button:hover {
+            color: var(--primary-color);
+        }
+
+        .tab-button.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px; /* Overlap border */
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .tab-content {
+            padding: 1em 0;
+        }
+        .tab-content h4 {
+            font-size: 1.2em;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            color: var(--primary-color);
+        }
+        .tab-content ul {
+            list-style: none;
+            margin-bottom: 1em;
+        }
+        .tab-content ul li {
+            margin-bottom: 0.5em;
+            position: relative;
+            padding-left: 1.5em;
+        }
+        .tab-content ul li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .tab-content .faq-item {
+            margin-bottom: 1.5em;
+        }
+        .tab-content .faq-question {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+        }
+
+        /* About Us */
+        .about-section {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .about-item {
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--background-light);
+        }
+
+        .about-item h3 {
+            margin-bottom: 1em;
+            font-size: 1.5em;
+            color: var(--secondary-color);
+        }
+
+        /* Contact Us */
+        .contact-section {
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .contact-info-block {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .contact-info-block h3 {
+            font-size: 1.6em;
+            margin-bottom: 1em;
+        }
+        .contact-info-block p {
+            margin-bottom: 0.8em;
+        }
+        .contact-info-block a {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8em;
+            margin-bottom: 1.5em;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: var(--font-family-sans);
+            font-size: 1em;
+        }
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .contact-form button[type="submit"] {
+            width: auto;
+        }
+
+
+        /* Policies */
+        .policy-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+        .policy-content h2 {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .policy-article {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .policy-article:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .policy-article h3 {
+            font-size: 1.8em;
+            margin-bottom: 1em;
+        }
+        .policy-article p {
+            margin-bottom: 1em;
+        }
+        .policy-article ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 1em;
+        }
+        .policy-article ul li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-column h4 {
+            color: var(--secondary-color);
+            font-size: 1.2em;
+            margin-bottom: 1.2em;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8em;
+        }
+
+        .footer-column a {
+            color: var(--text-light);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="#home" class="logo" aria-label="EleganceCraft Home">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 4.148L20 8.5V15.5L12 19.852L4 15.5V8.5L12 4.148ZM12 11C10.3431 11 9 9.65685 9 8C9 6.34315 10.3431 5 12 5C13.6569 5 15 6.34315 15 8C15 9.65685 13.6569 11 12 11Z" fill="currentColor"/>
+                </svg>
+                EleganceCraft
+            </a>
+            <nav>
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#policies">Policies</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero" aria-label="Welcome to EleganceCraft">
+            <!-- External image for hero banner -->
+            <img src="https://picsum.photos/seed/elegancecraft-hero/1600/600" alt="Stylish living room with curated home decor" class="hero-img" loading="lazy">
+            <!-- Inline SVG fallback for hero banner -->
+            <svg class="hero-img" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice" style="background-color: #6B4F4F;">
+                <rect x="0" y="0" width="1600" height="600" fill="#6B4F4F"/>
+                <circle cx="800" cy="300" r="150" fill="rgba(255,255,255,0.1)"/>
+                <path d="M700 200 L900 200 L900 400 L700 400 Z" fill="rgba(255,255,255,0.15)"/>
+                <text x="800" y="320" font-family="Georgia, serif" font-size="60" fill="rgba(255,255,255,0.4)" text-anchor="middle">EleganceCraft</text>
+            </svg>
+            <div class="hero-content">
+                <h1>Discover Thoughtfully Designed Living.</h1>
+                <p>EleganceCraft: Where Quality Meets Style for Your Home.</p>
+                <a href="#shop" class="btn">Shop Our Collection</a>
+            </div>
+        </section>
+
+        <section class="container" id="product-highlights">
+            <div class="section-heading">
+                <h2>Our Curated Favorites</h2>
+                <p>Explore hand-picked items that blend timeless elegance with modern function.</p>
+            </div>
+            <div class="product-grid">
+                <article class="product-card">
+                    <img src="https://picsum.photos/seed/elegancecraft-product1/400/300" alt="Minimalist Ceramic Vase" class="product-card-image" loading="lazy">
+                    <svg class="product-card-image fallback" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                        <rect x="0" y="0" width="400" height="300" fill="#E0E0E0"/>
+                        <path d="M200 50 C250 50 280 100 280 150 C280 200 250 250 200 250 C150 250 120 200 120 150 C120 100 150 50 200 50 Z M180 150 C180 130 190 110 200 110 C210 110 220 130 220 150 C220 170 210 190 200 190 C190 190 180 170 180 150 Z" fill="var(--primary-color)" opacity="0.3"/>
+                    </svg>
+                    <div class="product-card-content">
+                        <h3>Artisan Ceramic Vase</h3>
+                        <p>A hand-thrown piece, perfect for adding a touch of modern sophistication.</p>
+                        <span class="product-card-price">$65.00</span>
+                        <a href="#product-detail-vase" class="btn">View Details</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://picsum.photos/seed/elegancecraft-product2/400/300" alt="Luxury Linen Bedding Set" class="product-card-image" loading="lazy">
+                    <svg class="product-card-image fallback" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                        <rect x="0" y="0" width="400" height="300" fill="#E0E0E0"/>
+                        <path d="M100 80 L300 80 L300 220 L100 220 Z M120 100 L280 100 L280 200 L120 200 Z" fill="var(--primary-color)" opacity="0.3"/>
+                        <circle cx="150" cy="150" r="20" fill="var(--primary-color)" opacity="0.2"/>
+                        <circle cx="250" cy="150" r="20" fill="var(--primary-color)" opacity="0.2"/>
+                    </svg>
+                    <div class="product-card-content">
+                        <h3>Luxury Linen Bedding Set</h3>
+                        <p>Experience unparalleled comfort and elegance with our breathable linen.</p>
+                        <span class="product-card-price">$249.00</span>
+                        <a href="#product-detail-bedding" class="btn">View Details</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://picsum.photos/seed/elegancecraft-product3/400/300" alt="Handcrafted Wooden Serving Board" class="product-card-image" loading="lazy">
+                    <svg class="product-card-image fallback" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                        <rect x="0" y="0" width="400" height="300" fill="#E0E0E0"/>
+                        <path d="M100 100 Q150 50 200 100 Q250 150 300 100 Q250 150 200 200 Q150 250 100 200 Z" fill="var(--primary-color)" opacity="0.3"/>
+                        <path d="M150 150 C180 130 220 130 250 150 L200 170 Z" fill="var(--primary-color)" opacity="0.2"/>
+                    </svg>
+                    <div class="product-card-content">
+                        <h3>Wooden Serving Board</h3>
+                        <p>Perfect for entertaining, carved from sustainable, premium quality wood.</p>
+                        <span class="product-card-price">$85.00</span>
+                        <a href="#product-detail-board" class="btn">View Details</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="trust-signals">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12S7.59 4 12 4S20 7.59 20 12S16.41 20 12 20ZM12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z"/>
+                        </svg>
+                        <h3>Hand-Curated Collection</h3>
+                        <p>Every item is selected with an eye for exceptional design and lasting quality.</p>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path d="M12 12C14.76 12 17 9.76 17 7S14.76 2 12 2 7 4.24 7 7 9.24 12 12 12ZM12 14C9.34 14 4 15.34 4 18V20H20V18C20 15.34 14.66 14 12 14Z"/>
+                        </svg>
+                        <h3>Sustainable Practices</h3>
+                        <p>We partner with artisans and brands committed to ethical and eco-friendly production.</p>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 18H4V8L12 13L20 8V18ZM12 11L4 6H20L12 11Z"/>
+                        </svg>
+                        <h3>Exceptional Support</h3>
+                        <p>Our dedicated team is here to ensure your complete satisfaction with every purchase.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="shop" class="container product-detail-section">
+            <div class="category-intro">
+                <h2>Our Full Collection</h2>
+                <p>Browse our meticulously chosen selection, designed to elevate your everyday living.</p>
+            </div>
+            
+            <div class="category-grid">
+                <a href="#shop-home-decor" class="category-card">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path d="M12 3L2 12H5V20H19V12H22L12 3ZM17 18H7V10.19L12 5.69L17 10.19V18Z"/>
+                    </svg>
+                    <h3>Home Decor</h3>
+                    <p>Art, vases, textiles, and unique accents to personalize your space.</p>
+                </a>
+                <a href="#shop-kitchen" class="category-card">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path d="M7 11H9V13H7V11ZM11 11H13V13H11V11ZM15 11H17V13H15V11ZM22 5H2V19H22V5ZM4 7H20V17H4V7Z"/>
+                    </svg>
+                    <h3>Kitchen Essentials</h3>
+                    <p>Functional beauty for your culinary adventures, from serveware to tools.</p>
+                </a>
+                <a href="#shop-textiles" class="category-card">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z"/>
+                    </svg>
+                    <h3>Soft Furnishings</h3>
+                    <p>Cozy throws, elegant pillows, and luxurious bedding for every room.</p>
+                </a>
+                <a href="#shop-accessories" class="category-card">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7Z"/>
+                    </svg>
+                    <h3>Personal Accessories</h3>
+                    <p>Thoughtful gifts and elegant essentials for your daily routine.</p>
+                </a>
+            </div>
+
+            <div id="shop-all-products" class="section-heading">
+                <h2>All Products</h2>
+                <p>Discover the full breadth of our collection.</p>
+            </div>
+            <div class="product-grid">
+                <!-- Example Product Card (repeated for more products) -->
+                <article class="product-card">
+                    <img src="https://picsum.photos/seed/shop-prod-01/400/300" alt="Abstract art print in modern frame" class="product-card-image" loading="lazy">
+                    <svg class="product-card-image fallback" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                        <rect x="0" y="0" width="400" height="300" fill="#E0E0E0"/>
+                        <circle cx="200" cy="150" r="100" fill="var(--primary-color)" opacity="0.3"/>
+                    </svg>
+                    <div class="product-card-content">
+                        <h3>Abstract Canvas Art</h3>
+                        <p>Modern art print to enhance your living space. Limited edition.</p>
+                        <span class="product-card-price">$120.00</span>
+                        <a href="#product-detail-art" class="btn">Add to Cart</a>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="https://picsum.photos/seed/shop-prod-02/400/300" alt="Stainless steel coffee maker brewing coffee" class="product-card-image" loading="lazy">
+                    <svg class="product-card-image fallback" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                        <rect x="0" y="0" width="400" height="300" fill="#E0E0E0"/>
+                        <path d="M150 50 L250 50 L250 250 L150 250 Z" fill="var(--primary-color)" opacity="0.3"/>
+                        <circle cx="200" cy="70" r="20" fill="var(--secondary-color)" opacity="0.4"/>
+                    </svg>
+                    <div class="product-card-content">
+                        <h3>Designer Coffee Brewer</h3>
+                        <p>Brew perfection with this elegant and efficient coffee maker.</p>
+                        <span class="product-card-price">$180.00</span>
+                        <a href="#product-detail-coffee" class="btn">Add to Cart</a>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="https://picsum.photos/seed/shop-prod-03/400/300" alt="Soft woolen throw blanket draped over a sofa" class="product-card-image" loading="lazy">
+                    <svg class="product-card-image fallback" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                        <rect x="0" y="0" width="400" height="300" fill="#E0E0E0"/>
+                        <path d="M100 100 Q150 50 200 100 T300 100 Q250 150 200 200 T100 200 Z" fill="var(--primary-color)" opacity="0.3"/>
+                    </svg>
+                    <div class="product-card-content">
+                        <h3>Premium Wool Throw</h3>
+                        <p>Luxuriously soft and warm, perfect for cozy evenings.</p>
+                        <span class="product-card-price">$95.00</span>
+                        <a href="#product-detail-throw" class="btn">Add to Cart</a>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <img src="https://picsum.photos/seed/shop-prod-04/400/300" alt="Handstitched leather wallet on a wooden surface" class="product-card-image" loading="lazy">
+                    <svg class="product-card-image fallback" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                        <rect x="0" y="0" width="400" height="300" fill="#E0E0E0"/>
+                        <rect x="120" y="100" width="160" height="100" rx="10" ry="10" fill="var(--primary-color)" opacity="0.3"/>
+                    </svg>
+                    <div class="product-card-content">
+                        <h3>Handstitched Leather Wallet</h3>
+                        <p>Crafted from genuine leather, ages beautifully over time.</p>
+                        <span class="product-card-price">$75.00</span>
+                        <a href="#product-detail-wallet" class="btn">Add to Cart</a>
+                    </div>
+                </article>
+                <!-- Add more products as needed -->
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn btn-outline">Load More Products</a>
+            </div>
+        </section>
+
+        <section id="product-detail-vase" class="container product-detail-section">
+            <div class="product-detail-grid">
+                <div class="product-image-container">
+                    <img src="https://picsum.photos/seed/artisan-ceramic-vase/600/450" alt="Elegant Artisan Ceramic Vase" loading="lazy">
+                    <svg class="product-card-image fallback" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
+                        <rect x="0" y="0" width="600" height="450" fill="#E0E0E0"/>
+                        <path d="M300 50 C370 50 420 150 420 225 C420 300 370 400 300 400 C230 400 180 300 180 225 C180 150 230 50 300 50 Z" fill="var(--primary-color)" opacity="0.2"/>
+                        <rect x="280" y="40" width="40" height="20" rx="5" ry="5" fill="var(--secondary-color)" opacity="0.3"/>
+                    </svg>
+                </div>
+                <div class="product-info">
+                    <h1>Artisan Ceramic Vase</h1>
+                    <span class="product-price">$65.00</span>
+                    <div class="product-description">
+                        <p>Discover the understated elegance of our Artisan Ceramic Vase. Hand-thrown by skilled ceramists, this piece embodies minimalist design with a rich, tactile finish. Its unique texture and warm, natural tone make it a perfect standalone decor item or a beautiful vessel for your favorite blooms.</p>
+                    </div>
+                    
+                    <form class="add-to-cart-form">
+                        <div class="quantity-selector">
+                            <button type="button" aria-label="Decrease quantity">-</button>
+                            <input type="number" value="1" min="1" max="10" aria-label="Product quantity">
+                            <button type="button" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button type="submit" class="btn">Add to Cart</button>
+                    </form>
+
+                    <div class="product-tabs">
+                        <div role="tablist" class="tab-buttons">
+                            <button type="button" role="tab" aria-selected="true" aria-controls="tab-desc" id="tab-button-desc" class="tab-button active">Description</button>
+                            <button type="button" role="tab" aria-selected="false" aria-controls="tab-benefits" id="tab-button-benefits" class="tab-button">Benefits</button>
+                            <button type="button" role="tab" aria-selected="false" aria-controls="tab-features" id="tab-button-features" class="tab-button">Features</button>
+                            <button type="button" role="tab" aria-selected="false" aria-controls="tab-faq" id="tab-button-faq" class="tab-button">FAQ</button>
+                        </div>
+                        <div id="tab-desc" role="tabpanel" aria-labelledby="tab-button-desc" class="tab-content">
+                            <p>Each EleganceCraft vase is a testament to artisanal skill, crafted from high-quality stoneware and finished with a subtle glaze. Its organic silhouette and earthy palette are designed to complement a wide range of interior styles, from modern minimalist to rustic chic. Bring a piece of handcrafted artistry into your home.</p>
+                        </div>
+                        <div id="tab-benefits" role="tabpanel" aria-labelledby="tab-button-benefits" class="tab-content" hidden>
+                            <h4>Why you'll love it:</h4>
+                            <ul>
+                                <li>Elevates any space with its refined, minimalist aesthetic.</li>
+                                <li>Serves as a unique focal point or a versatile accent piece.</li>
+                                <li>Durable and timeless, designed to be cherished for years.</li>
+                                <li>Supports traditional craftsmanship and independent artisans.</li>
+                            </ul>
+                        </div>
+                        <div id="tab-features" role="tabpanel" aria-labelledby="tab-button-features" class="tab-content" hidden>
+                            <h4>Product Specifications:</h4>
+                            <ul>
+                                <li>Material: Premium Stoneware Ceramic</li>
+                                <li>Finish: Matte Glaze with natural texture</li>
+                                <li>Color: Earthy Cream</li>
+                                <li>Dimensions: 8" (H) x 6" (Dia) - (Approximate, due to handmade nature)</li>
+                                <li>Care: Hand wash recommended.</li>
+                            </ul>
+                        </div>
+                        <div id="tab-faq" role="tabpanel" aria-labelledby="tab-button-faq" class="tab-content" hidden>
+                            <div class="faq-item">
+                                <h4 class="faq-question">How do I care for my ceramic vase?</h4>
+                                <p>We recommend hand washing your vase with mild soap and warm water. Avoid harsh abrasives to preserve its unique finish.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4 class="faq-question">Is the vase waterproof?</h4>
+                                <p>Yes, all our ceramic vases are fully glazed internally to ensure they are watertight and suitable for fresh flowers.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4 class="faq-question">What if my vase arrives damaged?</h4>
+                                <p>Please contact our support team within 48 hours of delivery with photos of the damage. We'll arrange a replacement or refund immediately.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>About EleganceCraft</h2>
+                    <p>Our journey to redefine elegance in everyday living.</p>
+                </div>
+                <div class="about-content">
+                    <p>At EleganceCraft, we believe that your home should be a sanctuary of comfort and beauty, filled with objects that inspire joy and reflect your unique style. Our story began with a simple passion: to discover and share exceptional, handcrafted goods that stand the test of time, both in design and durability.</p>
+                    <p>We're more than just an online store; we're a community of curators, artisans, and design enthusiasts dedicated to bringing you a thoughtful collection that elevates your living experience. Every product you find here has a story, crafted with care and consideration for both people and the planet.</p>
+                </div>
+                <div class="about-grid">
+                    <article class="about-item">
+                        <h3>Our Mission</h3>
+                        <p>To empower conscious consumers with access to beautifully designed, high-quality, and sustainably sourced home and lifestyle products.</p>
+                    </article>
+                    <article class="about-item">
+                        <h3>Our Vision</h3>
+                        <p>To become the most trusted online destination for curated elegance, fostering a community that values craftsmanship, mindful living, and timeless style.</p>
+                    </article>
+                    <article class="about-item">
+                        <h3>Our Values</h3>
+                        <ul>
+                            <li><strong>Quality:</strong> Uncompromising standards in materials and construction.</li>
+                            <li><strong>Design:</strong> Aesthetic appeal that combines functionality with enduring style.</li>
+                            <li><strong>Sustainability:</strong> Commitment to ethical sourcing and eco-friendly practices.</li>
+                            <li><strong>Integrity:</strong> Transparency and honesty in all our interactions.</li>
+                            <li><strong>Community:</strong> Building relationships with artisans and customers alike.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Get in Touch</h2>
+                    <p>Questions, feedback, or just want to say hello? We'd love to hear from you.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info-block">
+                        <h3>Customer Support</h3>
+                        <p>Our dedicated support team is available to assist you with any inquiries regarding products, orders, or general information. We aim to respond within 24-48 hours.</p>
+                        <p><strong>Email:</strong> <a href="mailto:support@elegancecraft.com">support@elegancecraft.com</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+1-800-123-4567">+1 (800) 123-4567</a></p>
+                        <p><strong>Operating Hours:</strong> Mon-Fri, 9:00 AM - 5:00 PM EST</p>
+                    </div>
+                    <div class="contact-info-block">
+                        <h3>Send Us a Message</h3>
+                        <form class="contact-form">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+
+                            <label for="email">Your Email:</label>
+                            <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
+
+                            <label for="message">Your Message:</label>
+                            <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="policies" class="policy-section">
+            <div class="container policy-content">
+                <h2>Our Policies</h2>
+                <p>Transparent and fair practices are at the heart of EleganceCraft.</p>
+
+                <article class="policy-article">
+                    <h3>Return Policy</h3>
+                    <p>We want you to be completely satisfied with your EleganceCraft purchase. If for any reason you are not, we offer a hassle-free return policy.</p>
+                    <ul>
+                        <li><strong>30-Day Returns:</strong> You may return most new, unused items within 30 days of delivery for a full refund.</li>
+                        <li><strong>Original Condition:</strong> Items must be returned in their original packaging, unused, and in the same condition that you received them.</li>
+                        <li><strong>Return Shipping:</strong> Customers are responsible for return shipping costs unless the item arrived damaged or incorrect.</li>
+                        <li><strong>Processing Refunds:</strong> Refunds are typically processed within 7-10 business days after we receive and inspect the returned item.</li>
+                        <li><strong>Non-Returnable Items:</strong> Custom-made items, perishable goods, and digital products are not eligible for return.</li>
+                    </ul>
+                    <p>For more detailed instructions, please contact our support team.</p>
+                </article>
+
+                <article class="policy-article">
+                    <h3>Shipping Policy</h3>
+                    <p>EleganceCraft is committed to delivering your beautiful items safely and efficiently.</p>
+                    <ul>
+                        <li><strong>Processing Time:</strong> Orders are typically processed and shipped within 1-3 business days.</li>
+                        <li><strong>Shipping Methods:</strong> We offer standard and expedited shipping options. Shipping costs and estimated delivery times are calculated at checkout.</li>
+                        <li><strong>Tracking:</strong> A tracking number will be provided via email once your order has shipped.</li>
+                        <li><strong>International Shipping:</strong> We currently ship to select international destinations. Please note that customs duties, taxes, and fees may apply and are the responsibility of the recipient.</li>
+                        <li><strong>Shipping Damage:</strong> Please inspect your package upon arrival. Any shipping damage must be reported within 48 hours of delivery.</li>
+                    </ul>
+                </article>
+
+                <article class="policy-article">
+                    <h3>Privacy Policy</h3>
+                    <p>Your privacy is paramount to us. EleganceCraft is dedicated to protecting your personal information.</p>
+                    <ul>
+                        <li><strong>Information Collection:</strong> We collect personal information (name, address, email, payment details) necessary for order fulfillment and customer support.</li>
+                        <li><strong>Use of Information:</strong> Your information is used solely for processing transactions, delivering products, and improving your shopping experience.</li>
+                        <li><strong>Data Security:</strong> We implement robust security measures to protect your data from unauthorized access or disclosure.</li>
+                        <li><strong>No Sharing:</strong> We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties without your consent, except as required for order fulfillment (e.g., shipping carriers).</li>
+                        <li><strong>Cookies:</strong> Our website uses cookies to enhance your browsing experience and analyze site traffic. You can manage cookie preferences in your browser settings.</li>
+                    </ul>
+                </article>
+
+                <article class="policy-article">
+                    <h3>Terms of Service</h3>
+                    <p>By accessing or using the EleganceCraft website, you agree to comply with and be bound by the following terms and conditions.</p>
+                    <ul>
+                        <li><strong>Acceptance of Terms:</strong> These Terms of Service constitute a legally binding agreement between you and EleganceCraft.</li>
+                        <li><strong>Intellectual Property:</strong> All content on this site, including text, graphics, logos, and images, is the property of EleganceCraft or its content suppliers and protected by intellectual property laws.</li>
+                        <li><strong>User Conduct:</strong> You agree not to use the website for any unlawful purpose or in any way that could damage, disable, or impair the site.</li>
+                        <li><strong>Product Information:</strong> We strive for accuracy in product descriptions and pricing, but errors may occur. We reserve the right to correct any errors and to change or update information at any time.</li>
+                        <li><strong>Limitation of Liability:</strong> EleganceCraft shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from the use or inability to use our products or services.</li>
+                        <li><strong>Governing Law:</strong> These terms shall be governed by the laws of [Your Country/State], without regard to its conflict of law principles.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4>EleganceCraft</h4>
+                <p>Curated collections for a thoughtfully designed life. Quality, style, and sustainability.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#shop-home-decor">Home Decor</a></li>
+                    <li><a href="#shop-kitchen">Kitchen Essentials</a></li>
+                    <li><a href="#shop-textiles">Soft Furnishings</a></li>
+                    <li><a href="#shop-accessories">Personal Accessories</a></li>
+                    <li><a href="#shop">All Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#policies">Shipping Information</a></li>
+                    <li><a href="#policies">Return Policy</a></li>
+                    <li><a href="#policies">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#policies">Privacy Policy</a></li>
+                    <li><a href="#policies">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2023 EleganceCraft. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Hamburger menu functionality
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    // Toggle aria-expanded for accessibility
+                    const isExpanded = navMenu.classList.contains('active');
+                    hamburger.setAttribute('aria-expanded', isExpanded);
+                });
+
+                // Close nav menu when a link is clicked (for single-page navigation)
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navMenu.classList.contains('active')) {
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            hamburger.setAttribute('aria-expanded', false);
+                        }
+                    });
+                });
+            }
+
+            // Tab functionality for Product Detail page
+            const tabButtonsContainer = document.querySelector('.product-tabs .tab-buttons');
+            const tabButtons = document.querySelectorAll('.product-tabs .tab-button');
+            const tabContents = document.querySelectorAll('.product-tabs .tab-content');
+
+            if (tabButtonsContainer && tabButtons.length > 0 && tabContents.length > 0) {
+                tabButtonsContainer.addEventListener('click', (event) => {
+                    const clickedButton = event.target.closest('.tab-button');
+                    if (!clickedButton) return;
+
+                    // Deactivate current tab
+                    tabButtons.forEach(button => button.classList.remove('active'));
+                    tabButtons.forEach(button => button.setAttribute('aria-selected', 'false'));
+                    tabContents.forEach(content => content.setAttribute('hidden', ''));
+
+                    // Activate new tab
+                    clickedButton.classList.add('active');
+                    clickedButton.setAttribute('aria-selected', 'true');
+                    const targetTabId = clickedButton.getAttribute('aria-controls');
+                    const targetTabContent = document.getElementById(targetTabId);
+                    if (targetTabContent) {
+                        targetTabContent.removeAttribute('hidden');
+                    }
+                });
+            }
+
+            // Quantity selector functionality
+            const quantitySelector = document.querySelector('.quantity-selector');
+            if (quantitySelector) {
+                const decreaseBtn = quantitySelector.querySelector('button:first-child');
+                const increaseBtn = quantitySelector.querySelector('button:last-child');
+                const quantityInput = quantitySelector.querySelector('input[type="number"]');
+
+                if (decreaseBtn && increaseBtn && quantityInput) {
+                    decreaseBtn.addEventListener('click', () => {
+                        let currentValue = parseInt(quantityInput.value);
+                        if (currentValue > parseInt(quantityInput.min)) {
+                            quantityInput.value = currentValue - 1;
+                        }
+                    });
+
+                    increaseBtn.addEventListener('click', () => {
+                        let currentValue = parseInt(quantityInput.value);
+                        if (currentValue < parseInt(quantityInput.max)) {
+                            quantityInput.value = currentValue + 1;
+                        }
+                    });
+
+                    quantityInput.addEventListener('change', () => {
+                        // Ensure value is within min/max after manual input
+                        let currentValue = parseInt(quantityInput.value);
+                        if (isNaN(currentValue) || currentValue < parseInt(quantityInput.min)) {
+                            quantityInput.value = parseInt(quantityInput.min);
+                        } else if (currentValue > parseInt(quantityInput.max)) {
+                            quantityInput.value = parseInt(quantityInput.max);
+                        }
+                    });
+                }
+            }
+
+            // Smooth scrolling for anchor links and active navigation state
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // Update active class in navigation
+                        navMenu.querySelectorAll('a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+
+                        // Scroll to target
+                        const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Set active class on page load based on URL hash
+            const currentHash = window.location.hash;
+            if (currentHash) {
+                const targetLink = document.querySelector(`.nav-menu a[href="${currentHash}"]`);
+                if (targetLink) {
+                    navMenu.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+                    targetLink.classList.add('active');
+                }
+            } else {
+                // Default to home if no hash
+                const homeLink = document.querySelector('.nav-menu a[href="#home"]');
+                if (homeLink) homeLink.classList.add('active');
+            }
+
+            // Observe sections for active navigation class on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const headerHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+            const options = {
+                root: null, // viewport
+                rootMargin: `-${headerHeight}px 0px -50% 0px`, // Adjust based on header height, and 50% from bottom
+                threshold: 0 // As soon as the section enters the rootMargin
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        navMenu.querySelectorAll('a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        const currentNavLink = document.querySelector(`.nav-menu a[href="#${id}"]`);
+                        if (currentNavLink) {
+                            currentNavLink.classList.add('active');
+                        }
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+
+        })();
+    </script>
+</body>
+</html>
