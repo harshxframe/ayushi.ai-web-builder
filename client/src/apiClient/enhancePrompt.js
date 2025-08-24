@@ -1,11 +1,11 @@
 import axios from "axios";
 
 // API URL
-const URL = "http://localhost:2000/canvas/";
+export const URL = import.meta.env.VITE_API_BASE;
 
 export const enhancePrompt = async (promptText) => {
     try {
-        const response = await axios.get(URL+"dummyResponse", {
+        const response = await axios.get(URL+"canvas/dummyResponse", {
             params: {
                 prompt: promptText, // ye backend me req.query.prompt banega
             },

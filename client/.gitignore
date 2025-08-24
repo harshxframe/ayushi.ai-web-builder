@@ -26,3 +26,6 @@ dist-ssr
 
 # macOS system files
 .DS_Store
+
+#.env file
+.env

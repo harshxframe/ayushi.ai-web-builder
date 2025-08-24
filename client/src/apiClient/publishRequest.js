@@ -1,11 +1,11 @@
 import axios from "axios";
 
 // API URL
-const URL = "http://localhost:2000/publish/";
+export const URL = import.meta.env.VITE_API_BASE;
 
 export const hostWebsiteCS = async (htmlcode) => {
     try {
-        const response = await axios.post(URL + "publishwebsite", {
+        const response = await axios.post(URL +"publish/publishwebsite", {
             html: htmlcode   // now backend me req.body.html banega
         });
 
