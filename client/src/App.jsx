@@ -13,8 +13,8 @@ function App() {
     <>
     <Routers>
  <Routes>
-        <Route path="/canvas" element={<Canvas />} />
-        <Route path="/" element={<NotFound />} />
+        <Route path="/" element={<Canvas />} />
+        <Route path="/error" element={<NotFound />} />
         <Route path='/preview' element={<PreviewWeb />} />
       </Routes>
     </Routers>
