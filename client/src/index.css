@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  /* Accent (Purple Gradient) */
+  --color-accent-start: #7f00ff;
+  --color-accent-end: #e100ff;
+
+  background: linear-gradient(123deg, #000000, #050212, #09000f);
+   /* background: linear-gradient(123deg, #0f0020, #06001e, #09000f); */
+  color: white;
+}
+
+
+.app-gredient{
+     background: linear-gradient(123deg, #000000, #050212, #09000f);
+}
+
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+
+
+/* For Code Preview */
+

@@ -1,0 +1,266 @@
+/* CSS for the canvas NavBar */
+
+.button-style {
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border-color: gray;
+  border-width: 0.3px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 510;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.button-style:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(128, 128, 128, 0.4);
+}
+
+
+.navicon-border {
+  border-radius: 8px;
+  border-color: gray;
+  border-width: 0.3px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.navicon-border:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(8, 1, 39, 0.4);
+}
+
+.nav-heading {
+  font-size: 20px;
+  margin-left: 10px;
+  font-weight: 550;
+}
+
+.button-icon {
+  font-size: 22px;
+  color: white;
+}
+
+/* Canvas NavBar CSS End.................... Here */
+
+
+.glass-card {
+  /* background: rgba(255, 255, 255, 0.1); semi-transparent */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* soft border */
+  border-radius: 16px;
+  /* rounded corners */
+  backdrop-filter: blur(10px);
+  /* blur background behind */
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  /* soft shadow */
+  color: white;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 50%;
+  left: 3.7px;
+  /* space from left */
+  transform: translateY(-50%);
+  transition: left 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggel-gredient {
+  background: linear-gradient(123deg, #32006b, #2704b4, #0a004b);
+}
+
+.toggle-button.preview-active {
+  /* parent width 60px - child width 30px - left offset 2px */
+  left: calc(55px - 30px - 1px);
+}
+
+
+/* PreviewNav Bar Icons */
+
+.nav-icons {
+  font-size: 20px;
+  color: white;
+}
+
+
+.test-gredient {
+  background: linear-gradient(90deg, #161622 0%, #2d2d44 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gradient-border-box {
+  position: relative;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.gradient-border-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.4px;
+  /* border thickness */
+  border-radius: 12px;
+  background: linear-gradient(90deg, #2b002b, #000c3b, #19002f);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+.icon-input-hover:hover {
+  background-color: rgba(189, 189, 189, 0.497);
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+
+.blinking {
+  animation: hoverBlink 1s infinite;
+}
+
+@keyframes hoverBlink {
+  0%,
+  100% {
+    background-color: transparent; /* normal state */
+    box-shadow: none;
+  }
+
+  50% {
+    background: linear-gradient(123deg, #000000e0, #050212e6, #09000fe8);
+    box-shadow: 
+      0 0 10px rgba(0, 0, 0, 0.6),
+      0 0 20px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* For vertical scrollbar */
+.flex::-webkit-scrollbar {
+  width: 8px; /* scrollbar thickness */
+}
+
+.flex::-webkit-scrollbar-track {
+  background: #1f1f1f; /* track color (dark) */
+  border-radius: 4px;
+}
+
+.flex::-webkit-scrollbar-thumb {
+  background-color: #000000; /* scrollbar handle color (black) */
+  border-radius: 4px;
+  border: 2px solid #1f1f1f; /* optional spacing around thumb */
+}
+
+
+/* Optional: hover effect */
+.flex::-webkit-scrollbar-thumb:hover {
+  background-color: #5f0092;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+   background: linear-gradient(123deg, #0f0020, #06001e, #09000f);
+}
+*::-webkit-scrollbar-thumb {
+background-color: #1b002a;
+  border-radius: 100px;
+}
+
+
+
+/* Editable code editor */
+/* removes blue outline on focus */
+.react-simple-code-editor textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Remove focus border/outline from react-simple-code-editor */
+.editor textarea:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove focus outline from react-simple-code-editor */
+.editor textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Remove default focus outline */
+.editor textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Line numbers using CSS only */
+.code-editor-container {
+  position: relative;
+  counter-reset: line;
+  padding-left: 3em; /* space for line numbers */
+}
+
+.editor div {
+  counter-increment: line;
+}
+
+.editor div::before {
+  content: counter(line);
+  display: inline-block;
+  width: 2em;
+  text-align: right;
+  margin-right: 0.5em;
+  opacity: 0.5;
+  user-select: none;
+  color: #888;
+}
+
+
+
+
+/* Dailog alert */
+
+.alert-dailog{
+  background-color: rgba(0, 0, 0, 0.62);
+}
+
+
+ @keyframes popup {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .animate-popup {
+            animation: popup 0.3s ease-out forwards;
+          }
