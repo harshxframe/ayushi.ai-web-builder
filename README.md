@@ -34,6 +34,7 @@ GEMINI_API_KEY=your-gemini-api-key-here
 
 # 📦 Other Config
 NODE_ENV=development
+
 🔹 Client (client/.env)
 Code snippet
 
@@ -68,13 +69,14 @@ cd client && npm run dev
 
 📸 Preview
 Here are some screenshots of Ayushi.AI in action:
-<p align="center">
-  <img src="https://i.ibb.co/70scRCq/Screenshot-2025-08-24-at-5-46-53-PM.png" width="350px" title="Home-Page">
-  <img src="https://i.ibb.co/q3t2VP43/Screenshot-2025-08-24-at-6-04-11-PM.png" width="350px" alt="OutPut Page">
-  <img src="https://i.ibb.co/yDn9CWR/Screenshot-2025-08-24-at-5-46-41-PM.png" width="350px" alt="Publish Website">
-  <img src="https://i.ibb.co/sdvrDDPr/Screenshot-2025-08-25-at-2-19-30-PM.png" width="350px" alt="Mobile output">
-
+<p style="text-align: center;">
+  <img src="https://iili.io/KdHwRTB.md.png" style="width: 350px;" title="Home-Page">
+  <img src="https://i.ibb.co/q3t2VP43/Screenshot-2025-08-24-at-6-04-11-PM.png" style="width: 350px;" alt="OutPut Page">
+  <img src="https://iili.io/KdHw7Q1.md.png" style="width: 350px;" alt="Publish Website">
+  <img src="https://iili.io/KdHwcEg.md.png" style="width: 350px;" alt="Mobile output">
 </p>
+
+
 
 🛠️ Tech Stack
 Frontend: React + Vite + TailwindCSS
@@ -89,4 +91,5 @@ Hosting: Vercel (Frontend) + Local/Node Server (Backend)
 Project Name inspired by Ayushi ❤️
 
 Developed with love & hustle by Harsh Verma ✨
+
 
