@@ -27,7 +27,7 @@ Code snippet
 
 # 🌐 Server
 PORT=2000
-FRONTEND_URL=https://ayushi-ai.vercel.app
+FRONTEND_URL=yout url
 
 # 🔑 API Keys
 GEMINI_API_KEY=your-gemini-api-key-here
@@ -89,3 +89,4 @@ Hosting: Vercel (Frontend) + Local/Node Server (Backend)
 Project Name inspired by Ayushi ❤️
 
 Developed with love & hustle by Harsh Verma ✨
+
