@@ -29,7 +29,7 @@ export const enhancePrompt = async (promptText) => {
 
 export const magicPrompt = async (promptText) => {
     try {
-        const response = await axios.get(URL+"magicEnhancer", {
+        const response = await axios.get(URL+"canvas/magicEnhancer", {
             params: {
                 prompt: promptText, // ye backend me req.query.prompt banega
             },

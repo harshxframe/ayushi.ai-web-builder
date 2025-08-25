@@ -1,6 +1,6 @@
 import ai from "../aiClient/aiClient.js"
 import { apiResponse } from "../Utils/ResponseBody.js";
-import { singleFileWebsitePrompt } from "../Utils/prompts.js";
+import { singleFileWebsitePrompt1, singleFileWebsitePrompt2, singleFileWebsitePrompt3} from "../Utils/prompts.js";
 import { snakeGame } from "../Utils/demoHtmlResponse.js";
 
 const genAI = async (req, res) => {
@@ -8,7 +8,7 @@ const genAI = async (req, res) => {
         console.log("Request received!");
         const query = req.query.prompt;
         if (query != null && query.trim() !== "") {
-            const llmPrompt = singleFileWebsitePrompt(query);
+            const llmPrompt = singleFileWebsitePrompt3(query);
             const demoPrompt = query;
             const response = await ai.models.generateContent({
                 model: "gemini-2.5-flash",

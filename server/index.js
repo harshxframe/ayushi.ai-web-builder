@@ -17,8 +17,10 @@ app.use(helmet()); // basic security headers
 
 // CORS config (allow frontend + localhost for dev)
 const allowedOrigins = [
-  process.env.FRONTEND_URL || "http://localhost:5173"
+  process.env.FRONTEND_URL && "http://localhost:5173"
 ];
+
+
 app.use(
   cors({
     origin: (origin, callback) => {

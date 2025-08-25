@@ -8,6 +8,9 @@
   background: linear-gradient(123deg, #000000, #050212, #09000f);
    /* background: linear-gradient(123deg, #0f0020, #06001e, #09000f); */
   color: white;
+   background-repeat: no-repeat;               /* 🔒 stop tiling */
+  background-size: cover;                     /* fill nicely */
+  background-position: center top; 
 }
 
 

@@ -67,9 +67,22 @@ const Canvas = () => {
     const [isPublishing, setPublising] = useState(false);
     const [isPublishDone, setPublishDone] = useState(false);
     const [liveUrl, setLiveUrl] = useState("");
+    const [isLaptop, setIsLaptop] = useState(false);
 
 
 
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsLaptop(window.innerWidth > 795);
+    };
+
+    // initial check
+    checkDevice();
+
+    // resize listener
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
     useEffect(() => {
         setFinalCode(snakeGame);
         setCodeBackUp(snakeGame);
@@ -487,6 +500,21 @@ const Canvas = () => {
                     </div>
                 </div>
             )}
+
+                {!isLaptop && (
+                <div className="alert-dailog-1 w-full h-full absolute top-0 left-0 z-50 flex items-center justify-center bg-black">
+                    <div className="test-gredient flex justify-center items-center flex-col w-[350px] h-[220px] rounded-[5px] gap-[20px] animate-popup">
+                        <TbFaceIdError className="text-[40px]" />
+                        <p className="text-center px-[20px]">Please open on leptop, Ayushi.ai is not supported on mobile!</p>
+                        <button
+                            className="bg-violet-700 border-white border-[0.5px] font-semibold p-[10px] rounded-[10px] text-white w-[60%]"
+                        >
+                            got it
+                        </button>
+                    </div>
+                </div>
+            )}
+
 
         </>
     )
